@@ -11,6 +11,12 @@
    (chicken-5
     (import (chicken base)
             (chicken module))
+    (import srfi-4))
+   (chicken-6
+    (import (scheme base)
+            (scheme case-lambda)
+            (chicken base)
+            (chicken module))
     (import srfi-4)))
   (export generator make-iota-generator make-range-generator
           make-coroutine-generator list->generator vector->generator
@@ -24,6 +30,9 @@
           generator->vector generator->vector!  generator->string
           generator-fold generator-for-each generator-find
           generator-count generator-any generator-every generator-unfold)
-  (include "generators/r7rs-shim.scm")
+  (cond-expand
+    ((not chicken-6)
+     (include "generators/r7rs-shim.scm"))
+    (else))
   (include "generators/generators-impl.scm")
 )

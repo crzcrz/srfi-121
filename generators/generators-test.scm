@@ -11,6 +11,14 @@
   (import srfi-121)
   (import (only srfi-1 unfold))
   (import (only srfi-13 string-for-each))
+  (import srfi-4))
+ (chicken-6
+  (import (scheme base)
+          (chicken port))
+  (import test)
+  (import srfi-121)
+  (import (only srfi-1 unfold))
+  (import (only srfi-13 string-for-each))
   (import srfi-4)))
 
 (test-group "generators"
